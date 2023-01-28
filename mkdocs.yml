@@ -7,3 +7,6 @@ copyright: "Copyright &copy; 2020 - 2023 lumoumou"
 theme:
   name: 'material'
 
+nav:
+  - Home: index.md
+  - About: about.md
