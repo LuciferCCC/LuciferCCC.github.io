@@ -7,7 +7,7 @@ repo_url: https://github.com/LuciferCCC
 copyright: "Copyright &copy; 2022.01 - 2023 lumoumou"
 
 theme:
-  logo: 
+  # logo: 
   name: material
   language: zh
   icon:
@@ -17,6 +17,8 @@ theme:
     - navigation.instant
     - navigation.tracking
     - navigation.tabs
+    # - navigation.tabs.sticky
+    # - navigation.sections
     - navigation.path
     - navigation.indexes
     - navigation.top
@@ -73,3 +75,5 @@ extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
+extra:
+  homepage: https://LuciferCCC.github.io
