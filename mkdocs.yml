@@ -1,0 +1,9 @@
+site_name: MyBlogs
+site_url: https://LuciferCCC.github.io
+site_description: Recording some Experience
+site_author: lumoumou
+repo_name: GitHub
+copyright: "Copyright &copy; 2020 - 2023 lumoumou"
+theme:
+  name: 'material'
+
