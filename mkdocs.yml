@@ -43,22 +43,25 @@ theme:
   # - git-revision-date-localized:
   #     enable_creation_date: true
 
+# plugins:
+#   - meta
+#   - blog
 
 nav:
-  - 简介: 主页简介.md
+  - 简介: blogs/post/主页简介.md
   - 算法基础课:
-    - 第一章 基础算法: 算法基础课/第一章 基础算法.md
+    - 第一章 基础算法: blogs/post/算法基础课/第一章 基础算法.md
 
   - 算法提高课:
-    - 第一章 基础算法(0): 算法提高课/第一章 基础算法(0).md
+    - 第一章 基础算法(0): blogs/post/算法提高课/第一章 基础算法(0).md
       
   - 机器学习:
-    - 第一章 线性回归: 机器学习/第一章 线性回归/课堂笔记.md
+    - 第一章 线性回归: blogs/post/机器学习/第一章 线性回归/课堂笔记.md
 
   - Linux: 
     - 常用指令:
-      - Git: Linux/常用指令/git.md
-      - Docker: Linux/常用指令/docker.md
+      - Git: blogs/post/Linux/常用指令/git.md
+      - Docker: blogs/post/Linux/常用指令/docker.md
 
 markdown_extensions:
   - pymdownx.arithmatex:
