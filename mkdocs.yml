@@ -1,12 +1,75 @@
-site_name: MyBlogs
+site_name: Lumoumou' Zone
 site_url: https://LuciferCCC.github.io
 site_description: Recording some Experience
 site_author: lumoumou
-repo_name: GitHub
-copyright: "Copyright &copy; 2020 - 2023 lumoumou"
+repo_name: LiciferCCC.github.io
+repo_url: https://github.com/LuciferCCC
+copyright: "Copyright &copy; 2022.01 - 2023 lumoumou"
+
 theme:
-  name: 'material'
+  logo: 
+  name: material
+  language: zh
+  icon:
+    repo: fontawesome/brands/github
+
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.path
+    - navigation.indexes
+    - navigation.top
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - search.share
+    - header.autohide
+    - navigation.footer
+    - content.code.copy
+    - content.code.annotate
+
+
+  palette:
+    scheme: slate
+    primary: deep purple
+    accent: deep purple
+
+plugins:
+  - search:
+      lang: en
+  - git-revision-date-localized:
+      enable_creation_date: true
+
 
 nav:
-  - Home: index.md
-  - About: about.md
+  - 简介: 主页简介.md
+  - 算法基础课:
+    - 第一章 基础算法: 算法基础课/第一章 基础算法.md
+
+  - 算法提高课:
+    - 第一章 基础算法(0): 算法提高课/第一章 基础算法(0).md
+      
+  - 机器学习:
+    - 第一章 线性回归: 机器学习/第一章 线性回归/课堂笔记.md
+
+  - Linux: 
+    - 常用指令:
+      - Git: Linux/常用指令/git.md
+      - Docker: Linux/常用指令/docker.md
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.highlight
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
