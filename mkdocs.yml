@@ -37,9 +37,9 @@ theme:
     primary: deep purple
     accent: deep purple
 
-plugins:
-  - search:
-      lang: en
+# plugins:
+#   - search:
+#       lang: en
   # - git-revision-date-localized:
   #     enable_creation_date: true
 
