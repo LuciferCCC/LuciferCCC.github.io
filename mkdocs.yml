@@ -61,9 +61,11 @@ nav:
 
   - Linux: 
     - 常用指令:
+      - Linux: blogs/post/Linux/常用指令/Linux.md
       - Git: blogs/post/Linux/常用指令/git.md
       - Docker: blogs/post/Linux/常用指令/docker.md
       - Shell: blogs/post/Linux/常用指令/shell.md
+      
 
 markdown_extensions:
   - pymdownx.tabbed:
