@@ -47,8 +47,8 @@ theme:
 #   - meta
 #   - blog
 
-plugins:
-  - git-revision-date-localized
+# plugins:
+#   - git-revision-date-localized
 
 
 
