@@ -42,6 +42,7 @@ theme:
 
 
 plugins:
+  - search
   - git-revision-date-localized:
       enabled: true
       type: date
