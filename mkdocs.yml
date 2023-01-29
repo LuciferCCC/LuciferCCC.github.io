@@ -7,7 +7,7 @@ repo_url: https://github.com/LuciferCCC
 copyright: "Copyright &copy; 2022.01 - 2023 lumoumou"
 
 theme:
-  # logo: 
+  logo: assets/logo.svg
   name: material
   language: zh
   icon:
@@ -46,6 +46,11 @@ theme:
 # plugins:
 #   - meta
 #   - blog
+
+plugins:
+  - git-revision-date-localized
+
+
 
 nav:
   - 简介: blogs/post/主页简介.md
