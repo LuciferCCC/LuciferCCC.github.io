@@ -67,6 +67,7 @@ nav:
     - 常用指令:
       - Git: blogs/post/Linux/常用指令/git.md
       - Docker: blogs/post/Linux/常用指令/docker.md
+      - Shell: blogs/post/Linux/常用指令/shell.md
 
 markdown_extensions:
   - pymdownx.arithmatex:
