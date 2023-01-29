@@ -19,10 +19,11 @@ theme:
     - navigation.tracking
     - navigation.tabs
     # - navigation.tabs.sticky
-    # - navigation.sections
+    - navigation.sections
     - navigation.path
     - navigation.indexes
     - navigation.top
+    # - toc.integrate
     - toc.follow
     - search.suggest
     - search.highlight
@@ -31,6 +32,7 @@ theme:
     - navigation.footer
     - content.code.copy
     - content.code.annotate
+    - content.tabs.link
 
 
   palette:
@@ -38,22 +40,12 @@ theme:
     primary: deep purple
     accent: deep purple
 
-# plugins:
-#   - search:
-#       lang: en
-  # - git-revision-date-localized:
-  #     enable_creation_date: true
-
-# plugins:
-#   - meta
-#   - blog
 
 plugins:
   - git-revision-date-localized:
       enabled: true
       type: date
       enable_creation_date: true
-
 
 
 nav:
@@ -74,6 +66,14 @@ nav:
       - Shell: blogs/post/Linux/常用指令/shell.md
 
 markdown_extensions:
+  - pymdownx.tabbed:
+      alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
+
   - pymdownx.arithmatex:
       generic: true
   - pymdownx.highlight:
@@ -81,7 +81,18 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
-  - pymdownx.highlight
+  - admonition
+  - footnotes
+  - pymdownx.caret:
+      smart_insert: true
+      insert: true
+      superscript: true
+  - pymdownx.tilde
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.mark:
+      smart_mark: true
+  - pymdownx.smartsymbols
 
 extra_javascript:
   - javascripts/mathjax.js
