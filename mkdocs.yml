@@ -8,6 +8,7 @@ copyright: "Copyright &copy; 2022.01 - 2023 lumoumou"
 
 theme:
   logo: assets/logo.svg
+  favicon: assets/logo.svg
   name: material
   language: zh
   icon:
