@@ -190,3 +190,4 @@ git commit -m "create a acapp"
 git push	
 ```
 
+> 到这里，部署到了 `nginx` 上，所以可以直接通过分配的网址访问。如果要像之前那样通过 `公网IP:端口` 访问需要执行 `python3 manage.py runserver 0.0.0.0:8000`
