@@ -60,6 +60,14 @@ nav:
   - 机器学习:
     - 第一章 线性回归: blogs/post/机器学习/第一章 线性回归/课堂笔记.md
 
+  - AcWing工程课——Django:
+    - 项目简介: blogs/post/AcWing工程课——Django/简介.md
+    - 第一章 项目基本设置: blogs/post/AcWing工程课——Django/一、项目基本设置.md
+    - 第二章 创建菜单界面: blogs/post/AcWing工程课——Django/二、创建菜单界面.md
+    - 第三章 创建游戏界面: blogs/post/AcWing工程课——Django/三、创建游戏界面.md
+    - 第四章 部署nginx和对接AcApp: blogs/post/AcWing工程课——Django/四、部署nginx和对接AcApp.md
+    - 第五章 创建账号系统: blogs/post/AcWing工程课——Django/五、创建账号系统.md
+
   - Linux: 
     - 常用指令:
       - Linux: blogs/post/Linux/常用指令/Linux.md
