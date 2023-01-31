@@ -85,7 +85,9 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
     <a href="https://LuciferCCC.github.io" title="Lumoumou&#39; Zone" class="md-header__button md-logo" aria-label="Lumoumou' Zone" data-md-component="logo">
       
@@ -168,14 +170,8 @@
     
   </nav>
   
-</header>
     
-    <div class="md-container" data-md-component="container">
       
-      
-        
-          
-            
 <nav class="md-tabs" aria-label="标签" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
@@ -284,7 +280,13 @@
     </ul>
   </div>
 </nav>
-          
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
         
       
       <main class="md-main" data-md-component="main">
@@ -529,6 +531,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_5" tabindex="0" aria-expanded="true">
@@ -713,6 +717,20 @@
     <li class="md-nav__item">
       <a href="../%E4%BA%94%E3%80%81%E5%88%9B%E5%BB%BA%E8%B4%A6%E5%8F%B7%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
         第五章 创建账号系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%85%AD%E3%80%81%E9%85%8D%E7%BD%AEAcWing%E4%B8%80%E9%94%AE%E7%99%BB%E5%BD%95/" class="md-nav__link">
+        第六章 配置AcWing一键登录
       </a>
     </li>
   
@@ -976,77 +994,117 @@
 <h2 id="_1">一、环境配置</h2>
 <h3 id="1-ubuntu-2004lts">1. 租好云服务器，注意 Ubuntu 版本：20.04LTS</h3>
 <h3 id="2-acs-sudo">2. 创建新的工作用户 <strong>acs</strong> 并赋予 <strong>sudo</strong> 权限</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>adduser<span class="w"> </span>acs<span class="w">  </span><span class="c1"># 创建用户 acs</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>usermod<span class="w"> </span>-aG<span class="w"> </span>sudo<span class="w"> </span>acs<span class="w">  </span><span class="c1"># 给用户 acs 分配 sudo 权限</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1">1</a></span>
+<span class="normal"><a href="#__codelineno-0-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a>adduser<span class="w"> </span>acs<span class="w">  </span><span class="c1"># 创建用户 acs</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a>usermod<span class="w"> </span>-aG<span class="w"> </span>sudo<span class="w"> </span>acs<span class="w">  </span><span class="c1"># 给用户 acs 分配 sudo 权限</span>
+</code></pre></div></td></tr></table></div>
 <h3 id="3-ssh">3. 配置 SSH 免密登录</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>vim<span class="w"> </span>~/.ssh/config
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>ssh-keygen
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>ssh-copy-id<span class="w"> </span><span class="s1">&#39;yourServerName&#39;</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
+<span class="normal"><a href="#__codelineno-1-2">2</a></span>
+<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1"></a>vim<span class="w"> </span>~/.ssh/config
+<a id="__codelineno-1-2" name="__codelineno-1-2"></a>ssh-keygen
+<a id="__codelineno-1-3" name="__codelineno-1-3"></a>ssh-copy-id<span class="w"> </span><span class="s1">&#39;yourServerName&#39;</span>
+</code></pre></div></td></tr></table></div>
 <p>在文件 <code>.ssh/config</code> 中配置如下：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Host<span class="w"> </span><span class="s1">&#39;yourServerName&#39;</span>:
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span>HostName<span class="w"> </span><span class="s1">&#39;公网 IP 地址&#39;</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span>User<span class="w"> </span><span class="s1">&#39;登录名，这里设置的是 acs&#39;</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a>Host<span class="w"> </span><span class="s1">&#39;yourServerName&#39;</span>:
+<a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">    </span>HostName<span class="w"> </span><span class="s1">&#39;公网 IP 地址&#39;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span>User<span class="w"> </span><span class="s1">&#39;登录名，这里设置的是 acs&#39;</span>
+</code></pre></div></td></tr></table></div>
 <h3 id="4-git">4. 配置 git</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s1">&#39;用户名&#39;</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s1">&#39;邮箱&#39;</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-1">1</a></span>
+<span class="normal"><a href="#__codelineno-3-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.name<span class="w"> </span><span class="s1">&#39;用户名&#39;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a>git<span class="w"> </span>config<span class="w"> </span>--global<span class="w"> </span>user.email<span class="w"> </span><span class="s1">&#39;邮箱&#39;</span>
+</code></pre></div></td></tr></table></div>
 <h3 id="5-vim-tmux">5. 配置 vim 和 tmux</h3>
 <p>这里直接将 <code>ACTerminal</code> 中根目录下的 <code>.vimrc</code>  和 <code>tmux.conf</code> 直接复制到服务器用户 <code>acs</code> 的根目录下即可。</p>
 <h3 id="6-docker">6. docker 的安装与环境配置</h3>
 <p>安装 <code>docker</code> 前先执行：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>apt<span class="w"> </span>update
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1"></a>apt<span class="w"> </span>update
+</code></pre></div></td></tr></table></div>
 <p>然后根据 <a href="https://docs.docker.com/engine/install/ubuntu/">官方    档</a> 中 <code>Installation using the repository</code> 中步骤一步一步执行即可。</p>
 <p><code>docker</code> 安装完毕之后可以使用指令 <code>docker -v</code> 来判断是否正确安装。</p>
 <p>为了避免每一次使用 <code>docker</code> 命令都需要加上 <code>sudo</code> 权限，可以将当前用户加入安装中自动创建的用户组：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>docker<span class="w"> </span><span class="nv">$USER</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-5-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1"></a>sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>docker<span class="w"> </span><span class="nv">$USER</span>
+</code></pre></div></td></tr></table></div>
 <blockquote>
 <p>上面命令执行完后，需要退出服务器重新登陆</p>
 </blockquote>
 <p>然后通过 <code>AcTerminal</code> 将 <code>AcTerminal</code> 中 <code>/var/lib/acwing/docker/images</code> 下的 <code>django_lesson_1_0.tar</code> 镜像上传到云服务器中：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>scp<span class="w"> </span>/var/lib/acwing/docker/images/django_lesson_1_0.tar<span class="w"> </span><span class="s1">&#39;yourHostName&#39;</span>:./
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-6-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1"></a>scp<span class="w"> </span>/var/lib/acwing/docker/images/django_lesson_1_0.tar<span class="w"> </span><span class="s1">&#39;yourHostName&#39;</span>:./
+</code></pre></div></td></tr></table></div>
 <p>配置过程：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># 首先进入自己的服务器</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="c1"># 加载镜像到本地服务器</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>docker<span class="w"> </span>load<span class="w"> </span>-i<span class="w"> </span>django_lesson_1_0.tar<span class="w"> </span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="c1"># 查看刚才加载的镜像</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>docker<span class="w"> </span>images<span class="w"> </span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="c1"># 使用镜像创建容器并启动</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="c1"># -p 设置端口映射：20000是用于ssh登录docker，8000是用于调试，这两个端口需要在服务器后台安全组中打开</span>
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="c1"># --name：设置容器名称</span>
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="c1"># -itd：指明要使用的 镜像名称:版本号</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">20000</span>:22<span class="w"> </span>-p<span class="w"> </span><span class="m">8000</span>:8000<span class="w"> </span>--name<span class="w"> </span>django_server<span class="w"> </span>-itd<span class="w"> </span>django_lesson:1.0<span class="w"> </span>
-<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>
-<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="c1"># 进入容器</span>
-<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>docker<span class="w"> </span>attach<span class="w"> </span>django_server
-<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>
-<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="c1"># 在容器里面创建新用户并赋予sudo权限</span>
-<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>adduser<span class="w"> </span>acs<span class="w"> </span>
-<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>usermod<span class="w"> </span>-aG<span class="w"> </span>sudo<span class="w"> </span>acs<span class="w">  </span>
-<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>
-<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="c1"># 挂起容器重新进入，先按 ctrl+p 再按 ctrl+q，然后退出服务器 ctrl+d</span>
-<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="c1"># ！！！如果直接 ctrl+d 会直接关掉容器，后面需要重新启动</span>
-<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a>
-<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="c1"># 使用 ssh 通过端口 20000 登录容器</span>
-<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a>ssh<span class="w"> </span>acs@localhost<span class="w"> </span>-p<span class="w"> </span><span class="m">20000</span><span class="w"> </span><span class="c1"># 在服务器端登录 docker 容器</span>
-<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a>ssh<span class="w"> </span>acs@123.60.154.120<span class="w"> </span>-p<span class="w"> </span><span class="m">20000</span><span class="w"> </span><span class="c1"># 在本地终端登录 docker 容器</span>
-<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a>
-<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a><span class="c1"># 配置 ssh 免密直接登录 docker 容器，就不需要使用服务器登陆了</span>
-<a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a>Host<span class="w"> </span>django
-<a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a><span class="w">    </span>HostName<span class="w"> </span><span class="m">123</span>.60.154.120
-<a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a><span class="w">    </span>User<span class="w"> </span>acs
-<a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a><span class="w">    </span>Port<span class="w"> </span><span class="m">20000</span>
-<a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a>
-<a id="__codelineno-7-35" name="__codelineno-7-35" href="#__codelineno-7-35"></a>scp-copy-id<span class="w"> </span>django
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-7-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-7-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-7-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-7-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-7-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-7-10">10</a></span>
+<span class="normal"><a href="#__codelineno-7-11">11</a></span>
+<span class="normal"><a href="#__codelineno-7-12">12</a></span>
+<span class="normal"><a href="#__codelineno-7-13">13</a></span>
+<span class="normal"><a href="#__codelineno-7-14">14</a></span>
+<span class="normal"><a href="#__codelineno-7-15">15</a></span>
+<span class="normal"><a href="#__codelineno-7-16">16</a></span>
+<span class="normal"><a href="#__codelineno-7-17">17</a></span>
+<span class="normal"><a href="#__codelineno-7-18">18</a></span>
+<span class="normal"><a href="#__codelineno-7-19">19</a></span>
+<span class="normal"><a href="#__codelineno-7-20">20</a></span>
+<span class="normal"><a href="#__codelineno-7-21">21</a></span>
+<span class="normal"><a href="#__codelineno-7-22">22</a></span>
+<span class="normal"><a href="#__codelineno-7-23">23</a></span>
+<span class="normal"><a href="#__codelineno-7-24">24</a></span>
+<span class="normal"><a href="#__codelineno-7-25">25</a></span>
+<span class="normal"><a href="#__codelineno-7-26">26</a></span>
+<span class="normal"><a href="#__codelineno-7-27">27</a></span>
+<span class="normal"><a href="#__codelineno-7-28">28</a></span>
+<span class="normal"><a href="#__codelineno-7-29">29</a></span>
+<span class="normal"><a href="#__codelineno-7-30">30</a></span>
+<span class="normal"><a href="#__codelineno-7-31">31</a></span>
+<span class="normal"><a href="#__codelineno-7-32">32</a></span>
+<span class="normal"><a href="#__codelineno-7-33">33</a></span>
+<span class="normal"><a href="#__codelineno-7-34">34</a></span>
+<span class="normal"><a href="#__codelineno-7-35">35</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="c1"># 首先进入自己的服务器</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="c1"># 加载镜像到本地服务器</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>docker<span class="w"> </span>load<span class="w"> </span>-i<span class="w"> </span>django_lesson_1_0.tar<span class="w"> </span>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="c1"># 查看刚才加载的镜像</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a>docker<span class="w"> </span>images<span class="w"> </span>
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a>
+<a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="c1"># 使用镜像创建容器并启动</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="c1"># -p 设置端口映射：20000是用于ssh登录docker，8000是用于调试，这两个端口需要在服务器后台安全组中打开</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="c1"># --name：设置容器名称</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="c1"># -itd：指明要使用的 镜像名称:版本号</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13"></a>docker<span class="w"> </span>run<span class="w"> </span>-p<span class="w"> </span><span class="m">20000</span>:22<span class="w"> </span>-p<span class="w"> </span><span class="m">8000</span>:8000<span class="w"> </span>--name<span class="w"> </span>django_server<span class="w"> </span>-itd<span class="w"> </span>django_lesson:1.0<span class="w"> </span>
+<a id="__codelineno-7-14" name="__codelineno-7-14"></a>
+<a id="__codelineno-7-15" name="__codelineno-7-15"></a><span class="c1"># 进入容器</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16"></a>docker<span class="w"> </span>attach<span class="w"> </span>django_server
+<a id="__codelineno-7-17" name="__codelineno-7-17"></a>
+<a id="__codelineno-7-18" name="__codelineno-7-18"></a><span class="c1"># 在容器里面创建新用户并赋予sudo权限</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19"></a>adduser<span class="w"> </span>acs<span class="w"> </span>
+<a id="__codelineno-7-20" name="__codelineno-7-20"></a>usermod<span class="w"> </span>-aG<span class="w"> </span>sudo<span class="w"> </span>acs<span class="w">  </span>
+<a id="__codelineno-7-21" name="__codelineno-7-21"></a>
+<a id="__codelineno-7-22" name="__codelineno-7-22"></a><span class="c1"># 挂起容器重新进入，先按 ctrl+p 再按 ctrl+q，然后退出服务器 ctrl+d</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23"></a><span class="c1"># ！！！如果直接 ctrl+d 会直接关掉容器，后面需要重新启动</span>
+<a id="__codelineno-7-24" name="__codelineno-7-24"></a>
+<a id="__codelineno-7-25" name="__codelineno-7-25"></a><span class="c1"># 使用 ssh 通过端口 20000 登录容器</span>
+<a id="__codelineno-7-26" name="__codelineno-7-26"></a>ssh<span class="w"> </span>acs@localhost<span class="w"> </span>-p<span class="w"> </span><span class="m">20000</span><span class="w"> </span><span class="c1"># 在服务器端登录 docker 容器</span>
+<a id="__codelineno-7-27" name="__codelineno-7-27"></a>ssh<span class="w"> </span>acs@123.60.154.120<span class="w"> </span>-p<span class="w"> </span><span class="m">20000</span><span class="w"> </span><span class="c1"># 在本地终端登录 docker 容器</span>
+<a id="__codelineno-7-28" name="__codelineno-7-28"></a>
+<a id="__codelineno-7-29" name="__codelineno-7-29"></a><span class="c1"># 配置 ssh 免密直接登录 docker 容器，就不需要使用服务器登陆了</span>
+<a id="__codelineno-7-30" name="__codelineno-7-30"></a>Host<span class="w"> </span>django
+<a id="__codelineno-7-31" name="__codelineno-7-31"></a><span class="w">    </span>HostName<span class="w"> </span><span class="m">123</span>.60.154.120
+<a id="__codelineno-7-32" name="__codelineno-7-32"></a><span class="w">    </span>User<span class="w"> </span>acs
+<a id="__codelineno-7-33" name="__codelineno-7-33"></a><span class="w">    </span>Port<span class="w"> </span><span class="m">20000</span>
+<a id="__codelineno-7-34" name="__codelineno-7-34"></a>
+<a id="__codelineno-7-35" name="__codelineno-7-35"></a>scp-copy-id<span class="w"> </span>django
+</code></pre></div></td></tr></table></div>
 <h2 id="_2">二、项目搭建</h2>
 <p>查看 django 版本：<code>django-admin --version</code></p>
 <p>创建项目：<code>django-admin startproject acapp</code></p>
@@ -1056,8 +1114,8 @@
 <p>注意 <code>push</code> 到 <code>github</code> 之前需要将当前服务器的公钥放进 <code>github</code> 的钥匙访问管理中</p>
 </blockquote>
 <p>到这里可以试着运行项目，使用命令：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">python3</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">runserver</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">8000</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-8-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="n">python3</span> <span class="n">manage</span><span class="o">.</span><span class="n">py</span> <span class="n">runserver</span> <span class="mf">0.0.0.0</span><span class="p">:</span><span class="mi">8000</span>
+</code></pre></div></td></tr></table></div>
 <p>然后可以在服务器地址栏输入服务器的公网IP后面加上 <code>:8000</code> 即可访问。</p>
 <blockquote>
 <p>这个时候打开地址 <code>公网IP:8000</code> 往往会有报错：<code>Invalid HTTP_HOST header: '公网IP:8000'. You may need to add '公网IP' to ALLOWED_HOSTS</code>。根据提示，在文件 <code>/acapp/acapp/settings.py</code> 中的 <code>ALLOWED_HOSTS = []</code> 添加 <code>"公网IP"</code> 即可：<code>ALLOWED_HOSTS = [”IP地址“]</code>，这里要写在 <code>”“</code> 里面，是一个字符串。</p>
@@ -1068,17 +1126,19 @@
 <p><img src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/%E6%88%AA%E5%B1%8F2023-01-26%2015.25.45.png" style="zoom:80%;" /></p>
 <p>这里面多了一个 <code>__pycache__</code> 文件夹，这个是 <code>python</code> 为了加速运行预编译的文件，不需要上传。</p>
 <p>可以这样设置，在项目根目录下新建一个 <code>.gitignore</code> 文件并在里面写入：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>**/__pycache__
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-9-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1"></a>**/__pycache__
+</code></pre></div></td></tr></table></div>
 <p>这样使用 <code>git add .</code> 指令的时候会将该文件全部过滤掉。</p>
 <p>下面直接提交代码：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;modify allowed host&quot;</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>git<span class="w"> </span>push
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-10-1">1</a></span>
+<span class="normal"><a href="#__codelineno-10-2">2</a></span>
+<span class="normal"><a href="#__codelineno-10-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
+<a id="__codelineno-10-2" name="__codelineno-10-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;modify allowed host&quot;</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3"></a>git<span class="w"> </span>push
+</code></pre></div></td></tr></table></div>
 <p>上面过程结束后，可以发现我们在打开网页的时候是一个 <code>django</code> 的默认页面，下面为了开发一个 <code>app</code>，首先创建一个 <code>app</code></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>python3<span class="w"> </span>manage.py<span class="w"> </span>startapp<span class="w"> </span>game
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1"></a>python3<span class="w"> </span>manage.py<span class="w"> </span>startapp<span class="w"> </span>game
+</code></pre></div></td></tr></table></div>
 <p>执行后可以发现项目根目录下面多了一个文件夹 <code>app</code>，结构如下：</p>
 <p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/%E6%88%AA%E5%B1%8F2023-01-26%2015.43.54.png" /></p>
 <p>其中要关注几个文件夹：</p>
@@ -1088,27 +1148,30 @@
 <li><code>views.py</code>：定义视图</li>
 </ul>
 <p>提交一次：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;start app game&quot;</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>git<span class="w"> </span>push
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-1">1</a></span>
+<span class="normal"><a href="#__codelineno-12-2">2</a></span>
+<span class="normal"><a href="#__codelineno-12-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
+<a id="__codelineno-12-2" name="__codelineno-12-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;start app game&quot;</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3"></a>git<span class="w"> </span>push
+</code></pre></div></td></tr></table></div>
 <p>到这里如果运行项目 <code>python3 manage.py runserver 0.0.0.0:8000</code> 会报错，如下：</p>
 <p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/%E6%88%AA%E5%B1%8F2023-01-26%2015.51.26.png" /></p>
 <p>根据提示，先关闭项目，再执行：<code>python3 manage.py migrate</code>，再打开项目，就正常了。</p>
 <p>对于 <code>django</code> 项目，会有一个管理员界面，在地址栏里面输入：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>公网IP:8000/admin
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1"></a>公网IP:8000/admin
+</code></pre></div></td></tr></table></div>
 <p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230126155718.png" /></p>
 <p>回到项目根目录，这时可以创建一个管理员账户：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>python3<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-1">1</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1"></a>python3<span class="w"> </span>manage.py<span class="w"> </span>createsuperuser
+</code></pre></div></td></tr></table></div>
 <p>然后就可以在管理员页面登录了，登录后界面如下：</p>
 <p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230126160209.png" /></p>
 <p>下面创建自己的界面。</p>
 <p>先进入项目根目录文件夹下的 <code>game</code> 文件夹，然后创建文件 <code>urls.py</code> 和文件夹  <code>templates</code>。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>touch<span class="w"> </span>urls.py
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>mkdir<span class="w"> </span>templates<span class="w"> </span><span class="c1"># 用于存储网页模板</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-15-1">1</a></span>
+<span class="normal"><a href="#__codelineno-15-2">2</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1"></a>touch<span class="w"> </span>urls.py
+<a id="__codelineno-15-2" name="__codelineno-15-2"></a>mkdir<span class="w"> </span>templates<span class="w"> </span><span class="c1"># 用于存储网页模板</span>
+</code></pre></div></td></tr></table></div>
 <p>再说明几个重要文件/文件夹的作用：</p>
 <ul>
 <li><code>models.py</code>：存储数据结构，即数据库里面的表，或者说是 <code>class</code></li>
@@ -1117,41 +1180,68 @@
 <li><code>templates</code>：存储 <code>html</code>，即网页内容</li>
 </ul>
 <p>现在在文件 <code>views.py</code> 中写入以下代码：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>    <span class="n">line1</span> <span class="o">=</span> <span class="s1">&#39;&lt;h1 style=&quot;text-align: center&quot;&gt;术士之战&lt;/h1&gt;&#39;</span>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>    <span class="n">line4</span> <span class="o">=</span> <span class="s1">&#39;&lt;a href=&quot;/play/&quot;&gt;进入游戏界面&lt;/a&gt;&#39;</span>
-<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>    <span class="n">line3</span> <span class="o">=</span> <span class="s1">&#39;&lt;hr&gt;&#39;</span>
-<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>    <span class="n">line2</span> <span class="o">=</span> <span class="s1">&#39;&lt;img src=&quot;https://ts1.cn.mm.bing.net/th/id/R-C.ae41c43640dee5186f32cb4010f961d9?rik=55LRRKngICtMZw&amp;riu=http</span><span class="si">%3a%2f%2f</span><span class="s1">wow.tgbus.com</span><span class="si">%2f</span><span class="s1">UploadFiles_2396</span><span class="si">%2f</span><span class="s1">201707</span><span class="si">%2f</span><span class="s1">20170728150701694.png&amp;ehk=oNN6MUkcD4eqYYfZY%2b8pbe7eCXt7WkK4hsTUFHBOFG8</span><span class="si">%3d</span><span class="s1">&amp;risl=&amp;pid=ImgRaw&amp;r=0&quot; width=400&gt;&#39;</span>
-<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">line1</span> <span class="o">+</span> <span class="n">line4</span> <span class="o">+</span> <span class="n">line3</span> <span class="o">+</span> <span class="n">line2</span><span class="p">)</span>
-<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>
-<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>
-<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a><span class="k">def</span> <span class="nf">play</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>    <span class="n">line1</span> <span class="o">=</span> <span class="s1">&#39;&lt;h1 style=&quot;text-align: center&quot;&gt;游戏界面&lt;/h1&gt;&#39;</span>
-<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>    <span class="n">line3</span> <span class="o">=</span> <span class="s1">&#39;&lt;a href=&quot;/&quot;&gt;返回主界面&lt;/a&gt;&#39;</span>
-<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>    <span class="n">line2</span> <span class="o">=</span> <span class="s1">&#39;&lt;img src=&quot;https://ts1.cn.mm.bing.net/th/id/R-C.ae41c43640dee5186f32cb4010f961d9?rik=55LRRKngICtMZw&amp;riu=http</span><span class="si">%3a%2f%2f</span><span class="s1">wow.tgbus.com</span><span class="si">%2f</span><span class="s1">UploadFiles_2396</span><span class="si">%2f</span><span class="s1">201707</span><span class="si">%2f</span><span class="s1">20170728150701694.png&amp;ehk=oNN6MUkcD4eqYYfZY%2b8pbe7eCXt7WkK4hsTUFHBOFG8</span><span class="si">%3d</span><span class="s1">&amp;risl=&amp;pid=ImgRaw&amp;r=0&quot; width=400&gt;&#39;</span>
-<a id="__codelineno-16-15" name="__codelineno-16-15" href="#__codelineno-16-15"></a>    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">line1</span> <span class="o">+</span> <span class="n">line3</span> <span class="o">+</span> <span class="n">line2</span><span class="p">)</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-16-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-16-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-16-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-16-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-16-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-16-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-16-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-16-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-16-10">10</a></span>
+<span class="normal"><a href="#__codelineno-16-11">11</a></span>
+<span class="normal"><a href="#__codelineno-16-12">12</a></span>
+<span class="normal"><a href="#__codelineno-16-13">13</a></span>
+<span class="normal"><a href="#__codelineno-16-14">14</a></span>
+<span class="normal"><a href="#__codelineno-16-15">15</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="kn">from</span> <span class="nn">django.http</span> <span class="kn">import</span> <span class="n">HttpResponse</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2"></a>
+<a id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="k">def</span> <span class="nf">index</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4"></a>    <span class="n">line1</span> <span class="o">=</span> <span class="s1">&#39;&lt;h1 style=&quot;text-align: center&quot;&gt;术士之战&lt;/h1&gt;&#39;</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5"></a>    <span class="n">line4</span> <span class="o">=</span> <span class="s1">&#39;&lt;a href=&quot;/play/&quot;&gt;进入游戏界面&lt;/a&gt;&#39;</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6"></a>    <span class="n">line3</span> <span class="o">=</span> <span class="s1">&#39;&lt;hr&gt;&#39;</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7"></a>    <span class="n">line2</span> <span class="o">=</span> <span class="s1">&#39;&lt;img src=&quot;https://ts1.cn.mm.bing.net/th/id/R-C.ae41c43640dee5186f32cb4010f961d9?rik=55LRRKngICtMZw&amp;riu=http</span><span class="si">%3a%2f%2f</span><span class="s1">wow.tgbus.com</span><span class="si">%2f</span><span class="s1">UploadFiles_2396</span><span class="si">%2f</span><span class="s1">201707</span><span class="si">%2f</span><span class="s1">20170728150701694.png&amp;ehk=oNN6MUkcD4eqYYfZY%2b8pbe7eCXt7WkK4hsTUFHBOFG8</span><span class="si">%3d</span><span class="s1">&amp;risl=&amp;pid=ImgRaw&amp;r=0&quot; width=400&gt;&#39;</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8"></a>    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">line1</span> <span class="o">+</span> <span class="n">line4</span> <span class="o">+</span> <span class="n">line3</span> <span class="o">+</span> <span class="n">line2</span><span class="p">)</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9"></a>
+<a id="__codelineno-16-10" name="__codelineno-16-10"></a>
+<a id="__codelineno-16-11" name="__codelineno-16-11"></a><span class="k">def</span> <span class="nf">play</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<a id="__codelineno-16-12" name="__codelineno-16-12"></a>    <span class="n">line1</span> <span class="o">=</span> <span class="s1">&#39;&lt;h1 style=&quot;text-align: center&quot;&gt;游戏界面&lt;/h1&gt;&#39;</span>
+<a id="__codelineno-16-13" name="__codelineno-16-13"></a>    <span class="n">line3</span> <span class="o">=</span> <span class="s1">&#39;&lt;a href=&quot;/&quot;&gt;返回主界面&lt;/a&gt;&#39;</span>
+<a id="__codelineno-16-14" name="__codelineno-16-14"></a>    <span class="n">line2</span> <span class="o">=</span> <span class="s1">&#39;&lt;img src=&quot;https://ts1.cn.mm.bing.net/th/id/R-C.ae41c43640dee5186f32cb4010f961d9?rik=55LRRKngICtMZw&amp;riu=http</span><span class="si">%3a%2f%2f</span><span class="s1">wow.tgbus.com</span><span class="si">%2f</span><span class="s1">UploadFiles_2396</span><span class="si">%2f</span><span class="s1">201707</span><span class="si">%2f</span><span class="s1">20170728150701694.png&amp;ehk=oNN6MUkcD4eqYYfZY%2b8pbe7eCXt7WkK4hsTUFHBOFG8</span><span class="si">%3d</span><span class="s1">&amp;risl=&amp;pid=ImgRaw&amp;r=0&quot; width=400&gt;&#39;</span>
+<a id="__codelineno-16-15" name="__codelineno-16-15"></a>    <span class="k">return</span> <span class="n">HttpResponse</span><span class="p">(</span><span class="n">line1</span> <span class="o">+</span> <span class="n">line3</span> <span class="o">+</span> <span class="n">line2</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
 <p>在文件 <code>urls.py</code> 中写入以下代码：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="kn">from</span> <span class="nn">game.views</span> <span class="kn">import</span> <span class="n">index</span><span class="p">,</span> <span class="n">play</span>
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
-<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    <span class="n">path</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">),</span> <span class="c1"># path 作用是解析域名</span>
-<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>    <span class="n">path</span><span class="p">(</span><span class="s2">&quot;play/&quot;</span><span class="p">,</span> <span class="n">play</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;play&quot;</span><span class="p">)</span>
-<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="p">]</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1">1</a></span>
+<span class="normal"><a href="#__codelineno-17-2">2</a></span>
+<span class="normal"><a href="#__codelineno-17-3">3</a></span>
+<span class="normal"><a href="#__codelineno-17-4">4</a></span>
+<span class="normal"><a href="#__codelineno-17-5">5</a></span>
+<span class="normal"><a href="#__codelineno-17-6">6</a></span>
+<span class="normal"><a href="#__codelineno-17-7">7</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="kn">from</span> <span class="nn">game.views</span> <span class="kn">import</span> <span class="n">index</span><span class="p">,</span> <span class="n">play</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3"></a>
+<a id="__codelineno-17-4" name="__codelineno-17-4"></a><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5"></a>    <span class="n">path</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">index</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;index&quot;</span><span class="p">),</span> <span class="c1"># path 作用是解析域名</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6"></a>    <span class="n">path</span><span class="p">(</span><span class="s2">&quot;play/&quot;</span><span class="p">,</span> <span class="n">play</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;play&quot;</span><span class="p">)</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7"></a><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
 <p>将其加入总路由，在文件 <code>~/acapp/acapp/urls.py</code> 文件中修改：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span><span class="p">,</span> <span class="n">include</span>
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
-<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
-<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;game/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;game.urls&#39;</span><span class="p">)),</span> <span class="c1"># 如果将 game/ 删除会自动打开页面</span>
-<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>    <span class="c1"># path(&#39;&#39;, include(&#39;game.urls&#39;)), 多页面需要先删除 game/</span>
-<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;admin/&#39;</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
-<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="p">]</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-18-1">1</a></span>
+<span class="normal"><a href="#__codelineno-18-2">2</a></span>
+<span class="normal"><a href="#__codelineno-18-3">3</a></span>
+<span class="normal"><a href="#__codelineno-18-4">4</a></span>
+<span class="normal"><a href="#__codelineno-18-5">5</a></span>
+<span class="normal"><a href="#__codelineno-18-6">6</a></span>
+<span class="normal"><a href="#__codelineno-18-7">7</a></span>
+<span class="normal"><a href="#__codelineno-18-8">8</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="kn">from</span> <span class="nn">django.contrib</span> <span class="kn">import</span> <span class="n">admin</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">path</span><span class="p">,</span> <span class="n">include</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3"></a>
+<a id="__codelineno-18-4" name="__codelineno-18-4"></a><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5"></a>    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;game/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;game.urls&#39;</span><span class="p">)),</span> <span class="c1"># 如果将 game/ 删除会自动打开页面</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6"></a>    <span class="c1"># path(&#39;&#39;, include(&#39;game.urls&#39;)), 多页面需要先删除 game/</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7"></a>    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;admin/&#39;</span><span class="p">,</span> <span class="n">admin</span><span class="o">.</span><span class="n">site</span><span class="o">.</span><span class="n">urls</span><span class="p">),</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8"></a><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
 <p>到这里如果在地址栏中输入 <code>公网IP:8000</code> 会显示如下：</p>
 <p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230126164017.png" /></p>
 <p>如果输入：<code>公网IP:8000/game</code> 会显示文字 <code>我的第一个网页！！！</code></p>
@@ -1163,17 +1253,19 @@
 <li>最终输出 <code>我的第一个网页！！！</code>。</li>
 </ol>
 <p>最后上传文件：，注意要现在 <code>.gitignore</code> 中添加对 <code>.swp</code> 文件的过滤，加上 <code>*.swp</code> 即可。</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;write my first page&quot;</span>
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>git<span class="w"> </span>push
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-19-1">1</a></span>
+<span class="normal"><a href="#__codelineno-19-2">2</a></span>
+<span class="normal"><a href="#__codelineno-19-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1"></a>git<span class="w"> </span>add<span class="w"> </span>.
+<a id="__codelineno-19-2" name="__codelineno-19-2"></a>git<span class="w"> </span>commit<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;write my first page&quot;</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3"></a>git<span class="w"> </span>push
+</code></pre></div></td></tr></table></div>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 30, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 31, 2023</span>
       
         <br>
         创建日期:
@@ -1268,7 +1360,7 @@
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow", "search.suggest", "search.highlight", "search.share", "header.autohide", "navigation.footer", "content.code.copy", "content.code.annotate", "content.tabs.link"], "search": "../../../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow", "search.suggest", "search.highlight", "search.share", "header.autohide", "navigation.footer", "content.code.copy", "content.code.annotate", "content.tabs.link"], "search": "../../../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
       <script src="../../../../assets/javascripts/bundle.51d95adb.min.js"></script>
