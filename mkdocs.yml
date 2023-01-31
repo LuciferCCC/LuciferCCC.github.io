@@ -18,7 +18,7 @@ theme:
     - navigation.instant
     - navigation.tracking
     - navigation.tabs
-    # - navigation.tabs.sticky
+    - navigation.tabs.sticky
     - navigation.sections
     - navigation.path
     - navigation.indexes
@@ -67,6 +67,7 @@ nav:
     - 第三章 创建游戏界面: blogs/post/AcWing工程课——Django/三、创建游戏界面.md
     - 第四章 部署nginx和对接AcApp: blogs/post/AcWing工程课——Django/四、部署nginx和对接AcApp.md
     - 第五章 创建账号系统: blogs/post/AcWing工程课——Django/五、创建账号系统.md
+    - 第六章 配置AcWing一键登录: blogs/post/AcWing工程课——Django/六、配置AcWing一键登录.md
 
   - Linux: 
     - 常用指令:

@@ -10,7 +10,7 @@
 - 登录容器，关闭所有运行中的任务。
 - 登录<font color=green>运行容器的服务器</font>，然后执行：
 
-```dockerfile
+```dockerfile linenums="1"
 docker commit CONTAINER_NAME django_lesson:1.1  # 将容器保存成镜像，将CONTAINER_NAME替换成容器名称
 
 docker stop CONTAINER_NAME  # 关闭容器
@@ -62,7 +62,7 @@ docker run -p 20000:22 -p 8000:8000 -p 80:80 -p 443:443 --name CONTAINER_NAME -i
 
 在文件夹 `/acapp/scripts` 下面添加文件 `uwsgi.ini` 并添加如下内容：
 
-```ini
+```ini linenums="1"
 [uwsgi]
 socket          = 127.0.0.1:8000
 chdir           = /home/acs/acapp
@@ -91,7 +91,7 @@ vacuum          = true
 
 之前为了方便调试，打开网页直接进入游戏界面，注释掉了菜单页面。现在去掉注释： `/home/acs/acapp/game/static/js/src/zbase.js`  
 
-```javascript
+```javascript linenums="1"
 export class AcGame {
     constructor(id) {   
         this.id = id;
@@ -110,7 +110,7 @@ export class AcGame {
 
 同时修改文件 `/home/acs/acapp/game/static/js/src/playground/zbase.js` 
 
-```javascript
+```javascript linenums="1"
 class AcGamePlayground {
     constructor(root) {
         this.root = root;
@@ -159,7 +159,7 @@ class AcGamePlayground {
 
 还发现不管窗口页面如何移动，菜单页面永远固定，而且字体不美观，这里进入文件 `/home/acs/acapp/game/static/css/game.css` 文件夹修改：
 
-```css
+```css linenums="1"
 .ac-game-menu-field {
     width: 20vw;
     position: relative;
@@ -184,7 +184,7 @@ class AcGamePlayground {
 
 提交代码：
 
-```shell
+```shell linenums="1"
 git add .
 git commit -m "create a acapp"
 git push	

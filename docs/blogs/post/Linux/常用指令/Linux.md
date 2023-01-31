@@ -31,4 +31,5 @@ sort # 将每行内容按字典序排序
 xargs # 将stdin中的数据用空格或回车分割成命令行参数
 find . -name '*.py' | xargs cat | wc -l # 统计当前目录下所有python文件的总行数
 find . -name '*.py' | xargs rm # 找到当前目录下所有python文件的并删除
+find 指定目录 -type d -name ".DS_Store" | xargs rm -rf # 删除指定目录下的所有 .DS_Store 文件夹
 ```
