@@ -68,6 +68,7 @@ nav:
     - 第四章 部署nginx和对接AcApp: blogs/post/AcWing工程课——Django/四、部署nginx和对接AcApp.md
     - 第五章 创建账号系统: blogs/post/AcWing工程课——Django/五、创建账号系统.md
     - 第六章 配置AcWing一键登录: blogs/post/AcWing工程课——Django/六、配置AcWing一键登录.md
+    - 第七章 实现联机对战系统: blogs/post/AcWing工程课——Django/七、实现联机对战系统.md
 
   - Linux: 
     - 常用指令:
