@@ -72,11 +72,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#_1" class="md-skip">
-          跳转至
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -495,38 +490,9 @@
       
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          第一章 线性回归
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="./" class="md-nav__link md-nav__link--active">
         第一章 线性回归
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    待更新
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -555,6 +521,8 @@
       <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
       
       
+        
+          
         
           
         
@@ -676,6 +644,20 @@
     <li class="md-nav__item">
       <a href="../../../AcWing%E5%B7%A5%E7%A8%8B%E8%AF%BE%E2%80%94%E2%80%94Django/%E5%85%AD%E3%80%81%E9%85%8D%E7%BD%AEAcWing%E4%B8%80%E9%94%AE%E7%99%BB%E5%BD%95/" class="md-nav__link">
         第六章 配置AcWing一键登录
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AcWing%E5%B7%A5%E7%A8%8B%E8%AF%BE%E2%80%94%E2%80%94Django/%E4%B8%83%E3%80%81%E5%AE%9E%E7%8E%B0%E8%81%94%E6%9C%BA%E5%AF%B9%E6%88%98%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        第七章 实现联机对战系统
       </a>
     </li>
   
@@ -847,21 +829,6 @@
   
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    待更新
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -879,16 +846,122 @@
 
 
 
-  <h1>第一章 线性回归</h1>
-
-<h2 id="_1">待更新</h2>
+<p><font color=green>预测值 <span class="arithmatex">\(h_{\theta}(x)\)</span></font>：
+$$
+\begin{align<em>}
+h_{\theta}(x)
+&amp;= \theta_0  +  \theta_1x_1  +  \theta_2x_2 + \dots \
+&amp;= \sum_{i=0}^{n}\theta_ix_i\
+&amp;= \theta^Tx
+\end{align</em>}
+$$
+上式中 <span class="arithmatex">\(\theta_0\)</span> 通常被称为<font color=green>偏置值</font>。</p>
+<p><font color=green>误差 <span class="arithmatex">\(\varepsilon\)</span></font>：真实值 <span class="arithmatex">\(y^{(i)}\)</span> 与预测值 <span class="arithmatex">\(h_{\theta}(x)\)</span> 之间的差异。误差 <span class="arithmatex">\(\varepsilon^{(i)}\)</span> 是独立同分布且 <span class="arithmatex">\(\varepsilon^{(i)} \sim N(0,\ \theta^2)\)</span></p>
+<p>对于每一个样本有：
+$$
+y^{(i)} = \theta<sup>Tx</sup>{(i)}  +  \varepsilon^{(i)} \tag 1
+$$
+显然，我们的目标是使 <span class="arithmatex">\(|\varepsilon^{(i)}|\)</span> 尽可能小。</p>
+<p>又因为有 <span class="arithmatex">\(\varepsilon^{(i)} \sim N(0,\ \theta^2)\)</span>，即 
+$$
+p(\varepsilon^{(i)}) = \frac{1}{\sqrt{2 \pi} \sigma} exp(- \frac{(\varepsilon<sup>{(i)})</sup>2}{2\sigma^2}) \tag 2
+$$
+欲使 <span class="arithmatex">\(|\varepsilon^{(i)}|\)</span> 尽可能小，等价于使得 <span class="arithmatex">\(|\varepsilon^{(i)}|\)</span> 尽可能接近于 <span class="arithmatex">\(0\)</span>，也就是说使的概率 <span class="arithmatex">\(p(\varepsilon^{(i)})\)</span> 尽可能大（因为均值为 <span class="arithmatex">\(0\)</span> 的正态函数在 <span class="arithmatex">\(\varepsilon = 0\)</span> 的时候取最大值）。</p>
+<p>将 <span class="arithmatex">\((1)\)</span> 式带入 <span class="arithmatex">\((2)\)</span> 中有：
+$$
+p(y<sup>{(i)} | x</sup>{(i)};  \theta) = \frac{1}{\sqrt{2 \pi} \sigma} exp(- \frac{(y^{(i)} - \theta<sup>Tx</sup>{(i)}))<sup>2}{2\sigma</sup>2})
+$$
+上式左边表是当 <span class="arithmatex">\(\theta\)</span> 与 <span class="arithmatex">\(x^{(i)}\)</span> 组合之后所求出的预测值 <span class="arithmatex">\(h_\theta(x)\)</span> 与真实值 <span class="arithmatex">\(y^{(i)}\)</span> 之间的误差 <span class="arithmatex">\(\varepsilon^{(i)}\)</span> 应该越小，即概率 <span class="arithmatex">\(p(y^{(i)}\ |\ x^{(i)}; \ \theta)\)</span> 越大越好，也就是说求一个 <span class="arithmatex">\(\theta\)</span> 使得概率 <span class="arithmatex">\(p(y^{(i)}\ |\ x^{(i)}; \ \theta)\)</span> 尽可能的大。这里就可以转换为概率统计中的最大似然函数来求解。</p>
+<p>似然函数：
+$$
+\begin{align<em>}
+L(\theta) &amp;= \prod_{i=1}^m p(y<sup>{(i)} | x</sup>{(i)};  \theta) \
+&amp;= \prod_{i=1}^m \frac{1}{\sqrt{2 \pi} \sigma} exp(- \frac{(y^{(i)} - \theta<sup>Tx</sup>{(i)}))<sup>2}{2\sigma</sup>2})
+\end{align</em>}
+$$
+根据最大似然函数的求解方法，两边同时取 <span class="arithmatex">\(ln\)</span> 有
+$$
+\begin{align*}
+ln L(\theta) &amp;= ln \prod_{i=1}^m \frac{1}{\sqrt{2 \pi} \sigma} exp(- \frac{(y^{(i)} - \theta<sup>Tx</sup>{(i)}))<sup>2}{2\sigma</sup>2}) \</p>
+<p>&amp;= mln\frac{1}{\sqrt{2 \pi} \sigma} - \frac{1}{\sigma^2} \dot  \frac{1}{2} \sum_{i=1}^m (y^{(i)} - \theta<sup>Tx</sup>{(i)}))^2 \</p>
+<p>J(\theta) &amp;\overset{\Delta}{=} \frac{1}{2} \sum_{i=1}^m (y^{(i)} - \theta<sup>Tx</sup>{(i)}))^2   \text{(最下二乘法)}
+\end{align*}
+$$
+有单调性，要使 <span class="arithmatex">\(L(\theta)\)</span> 最大，就需要使得 <span class="arithmatex">\(J(\theta)\)</span> 最小，</p>
+<p><font color=green>目标函数/损失函数 <span class="arithmatex">\(J(\theta)\)</span></font>：
+$$
+\begin{align*}
+J(\theta) &amp;= \frac{1}{2} \sum_{i=1}^m (y^{(i)} - \theta<sup>Tx</sup>{(i)}))^2\</p>
+<p>&amp;= \frac{1}{2} (X\theta - y)^T(X\theta - y)
+\end{align*}
+$$
+求偏导：
+$$
+\begin{align}
+\nabla_\theta J(\theta) &amp;= \nabla_\theta (\frac{1}{2} (X\theta - y)^T(X\theta - y)) \</p>
+<p>&amp;=\nabla_\theta(\frac{1}{2} (\theta^T X^T - y^T) (X\theta-y)) \ </p>
+<p>&amp;=\nabla_\theta(\frac{1}{2} (\theta<sup>TX</sup>TX\theta - \theta<sup>TX</sup>Ty - y^T X \theta + y^Ty)) \</p>
+<p>&amp;= \frac{1}{2} (2 X^T X \theta - X^T y - (y^T X)^T) \ </p>
+<p>&amp;= X^T X \theta - X^T y \</p>
+<p>&amp;\overset{\Delta}{=} 0 \</p>
+<p>\Rightarrow &amp; \theta = (X<sup>TX)</sup>{-1}X^Ty
+\end{align}
+$$</p>
+<blockquote>
+<p>对上式中 <span class="arithmatex">\((3)\)</span> 到 <span class="arithmatex">\((4)\)</span> 的过程： 线性代数中 <span class="arithmatex">\(X^TX\)</span> 的结果一定是一个对称矩阵，对于一个对称阵 <span class="arithmatex">\(A\)</span>，有结论 <span class="arithmatex">\(\frac{\partial \theta^T A \theta}{\partial \theta} = 2 A \theta\)</span>。</p>
+</blockquote>
+<p>到这里就存在两个问题：</p>
+<ol>
+<li>由上述公式，对于给定的数据矩阵 <span class="arithmatex">\(X\)</span> 和 <span class="arithmatex">\(y\)</span>，就可以直接求出 <span class="arithmatex">\(\theta\)</span>，那么机器学习的过程呢？</li>
+<li>对于矩阵 <span class="arithmatex">\(X\)</span> 不一定总是可逆矩阵。</li>
+</ol>
+<p>重新构造目标函数：<span class="arithmatex">\(J(\theta) = \frac{1}{2m} \sum_{i=1}^m (y^{i} - \theta^Tx^{i})^2\)</span></p>
+<blockquote>
+<p>上式中分母加上了 <span class="arithmatex">\(m\)</span> 是为了取到尽可能多的样本的平均值，后面加上平方是为了防止符号。</p>
+</blockquote>
+<ol>
+<li>批量梯度下降：</li>
+</ol>
+<div class="arithmatex">\[
+\begin{align*}
+\frac{\partial J(\theta)}{\partial \theta_j} &amp;= -\frac{1}{m} \sum_{i=1}^{m}(y^{i} - h_\theta(x^{i}))x_j^i \tag 1 \\
+\theta_j^{‘} &amp;= \theta + \frac{1}{m} \sum_{i=1}^{m}(y^{i} - h_\theta(x^{i}))x_j^i \tag 2 \\
+\end{align*}
+\]</div>
+<blockquote>
+<ul>
+<li>上式 <span class="arithmatex">\((2)\)</span> 中更新后的 <span class="arithmatex">\(\theta_j^{'}\)</span> 应该是原来的 <span class="arithmatex">\(\theta\)</span> 减去步长 <span class="arithmatex">\(-\frac{1}{m} \sum_{i=1}^{m}(y^{i} - h_\theta(x^{i}))x_j^i \tag 2\)</span>，因为是朝梯度下降的方向走。</li>
+<li>上式计算容易得到最优解，但是由于每次都需要考虑所有样本，速度很慢</li>
+</ul>
+</blockquote>
+<ol>
+<li>
+<p>随机梯度下降：$\theta_j^{‘} = \theta + (y^{i} - h_\theta(x<sup>{i}))x_j</sup>i $</p>
+<blockquote>
+<p>随机梯度下降每一次随机找一个样本，迭代速度很快，但是不一定每次都朝着收敛的方向</p>
+</blockquote>
+</li>
+<li>
+<p>小批量梯度下降：
+    $$
+    \theta_j  :=  \theta_j - \alpha\frac{1}{10} \sum_{k=i}^{i+9} (h_\theta(x^{(k)}) - y^{(k)}) x_j^{(k)}
+    $$</p>
+<blockquote>
+<ul>
+<li>每次选择一下部分数据来更新</li>
+<li><font color=green>学习率/步长 <span class="arithmatex">\(\alpha\)</span></font>：对结果会产生巨大的影响，一般从小开始往大设置。</li>
+</ul>
+</blockquote>
+</li>
+</ol>
+<p>python机器学习工具包简介：sckkit-learn</p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 29, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 1, 2023</span>
       
         <br>
         创建日期:
