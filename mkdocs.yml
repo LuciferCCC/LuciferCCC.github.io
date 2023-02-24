@@ -51,6 +51,7 @@ plugins:
 
 nav:
   - 简介: blogs/post/主页简介.md
+
   - 算法基础课:
     - 第一章 基础算法: blogs/post/算法基础课/第一章 基础算法.md
 
@@ -59,6 +60,15 @@ nav:
       
   - 机器学习:
     - 第一章 线性回归: blogs/post/机器学习/第一章 线性回归/课堂笔记.md
+
+  - 目标检测:
+    - YOLO基础: blogs/post/目标检测/YOLO基础.md
+
+  - 计算机专业基础课程:
+    - 计算机网络: blogs/post/计算机专业基础课程/计算机网络.md
+    - 操作系统: blogs/post/计算机专业基础课程/操作系统.md
+    - 数据结构: blogs/post/计算机专业基础课程/数据结构.md
+    - 计算机组成原理: blogs/post/计算机专业基础课程/计算机组成原理.md
 
   - AcWing工程课——Django:
     - 项目简介: blogs/post/AcWing工程课——Django/简介.md
