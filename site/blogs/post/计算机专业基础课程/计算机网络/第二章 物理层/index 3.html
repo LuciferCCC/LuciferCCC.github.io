@@ -1,0 +1,2094 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Recording some Experience">
+      
+      
+        <meta name="author" content="lumoumou">
+      
+      
+        <link rel="canonical" href="https://LuciferCCC.github.io/blogs/post/%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B8%93%E4%B8%9A%E5%9F%BA%E7%A1%80%E8%AF%BE%E7%A8%8B/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E7%89%A9%E7%90%86%E5%B1%82/">
+      
+      
+        <link rel="prev" href="../%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E6%A6%82%E8%BF%B0/">
+      
+      
+        <link rel="next" href="../../../AcWing%E5%B7%A5%E7%A8%8B%E8%AF%BE%E2%80%94%E2%80%94Django/%E7%AE%80%E4%BB%8B/">
+      
+      <link rel="icon" href="../../../../../assets/logo.svg">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.6">
+    
+    
+      
+        <title>第二章 物理层 - Lumoumou' Zone</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.558e4712.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="deep-purple">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="https://LuciferCCC.github.io" title="Lumoumou&#39; Zone" class="md-header__button md-logo" aria-label="Lumoumou' Zone" data-md-component="logo">
+      
+  <img src="../../../../../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Lumoumou' Zone
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              第二章 物理层
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08Z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/LuciferCCC" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LiciferCCC.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../../../%E4%B8%BB%E9%A1%B5%E7%AE%80%E4%BB%8B/" class="md-tabs__link">
+      简介
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="md-tabs__link">
+        算法基础课
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%E8%AF%BE/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%280%29/" class="md-tabs__link">
+        算法提高课
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/" class="md-tabs__link">
+        机器学习
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/YOLO%E5%9F%BA%E7%A1%80/" class="md-tabs__link">
+        目标检测
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E6%A6%82%E8%BF%B0/" class="md-tabs__link md-tabs__link--active">
+        计算机专业基础课程
+      </a>
+    </li>
+  
+
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../AcWing%E5%B7%A5%E7%A8%8B%E8%AF%BE%E2%80%94%E2%80%94Django/%E7%AE%80%E4%BB%8B/" class="md-tabs__link">
+        AcWing工程课——Django
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../Linux/%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/Linux/" class="md-tabs__link">
+        Linux
+      </a>
+    </li>
+  
+
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://LuciferCCC.github.io" title="Lumoumou&#39; Zone" class="md-nav__button md-logo" aria-label="Lumoumou' Zone" data-md-component="logo">
+      
+  <img src="../../../../../assets/logo.svg" alt="logo">
+
+    </a>
+    Lumoumou' Zone
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/LuciferCCC" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    LiciferCCC.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E4%B8%BB%E9%A1%B5%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+        简介
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2" tabindex="0" aria-expanded="false">
+          算法基础课
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="算法基础课" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          算法基础课
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        第一章 基础算法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE/%E7%AC%AC%E4%BA%8C%E7%AB%A0%20%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        第二章 数据结构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE/%E7%AC%AC%E4%B8%89%E7%AB%A0%20%E6%90%9C%E7%B4%A2%E4%B8%8E%E5%9B%BE%E8%AE%BA/" class="md-nav__link">
+        第三章 搜索与图论
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE/%E7%AC%AC%E5%9B%9B%E7%AB%A0%20%E6%95%B0%E5%AD%A6%E7%9F%A5%E8%AF%86/" class="md-nav__link">
+        第四章 数学知识
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%AE%97%E6%B3%95%E5%9F%BA%E7%A1%80%E8%AF%BE/%E7%AC%AC%E4%BA%94%E7%AB%A0%20%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="md-nav__link">
+        第五章 动态规划
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_3" tabindex="0" aria-expanded="false">
+          算法提高课
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="算法提高课" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          算法提高课
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%AE%97%E6%B3%95%E6%8F%90%E9%AB%98%E8%AF%BE/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E5%9F%BA%E7%A1%80%E7%AE%97%E6%B3%95%280%29/" class="md-nav__link">
+        第一章 基础算法(0)
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4" tabindex="0" aria-expanded="false">
+          机器学习
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="机器学习" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          机器学习
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E7%BA%BF%E6%80%A7%E5%9B%9E%E5%BD%92/%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0/" class="md-nav__link">
+        第一章 线性回归
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_5" tabindex="0" aria-expanded="false">
+          目标检测
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="目标检测" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          目标检测
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/YOLO%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        YOLO基础
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_6" type="checkbox" id="__nav_6" checked>
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6" tabindex="0" aria-expanded="true">
+          计算机专业基础课程
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="计算机专业基础课程" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          计算机专业基础课程
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_6_1" type="checkbox" id="__nav_6_1" checked>
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_6_1" tabindex="0" aria-expanded="true">
+          计算机网络(湖工版本)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="计算机网络(湖工版本)" data-md-level="2">
+        <label class="md-nav__title" for="__nav_6_1">
+          <span class="md-nav__icon md-icon"></span>
+          计算机网络(湖工版本)
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E6%A6%82%E8%BF%B0/" class="md-nav__link">
+        第一章 概述
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          第二章 物理层
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        第二章 物理层
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    (1) 物理层的基本概念
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    (2) 数据通信
+  </a>
+  
+    <nav class="md-nav" aria-label="(2) 数据通信">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 数据通信相关基本术语
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 三种通信方式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3 数据传输方式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    2.4 码元
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    2.5 数字通信系统数据传输速率的两种表示方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26" class="md-nav__link">
+    2.6 带宽
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    (3) 奈氏准则和香农定理
+  </a>
+  
+    <nav class="md-nav" aria-label="(3) 奈氏准则和香农定理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 失真
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 奈氏准则（奈奎斯特定理）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    3.3 香农定理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    3.4 奈氏准则和香农定理的联系
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    (4) 编码与调制
+  </a>
+  
+    <nav class="md-nav" aria-label="(4) 编码与调制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    4.1 基带信号与宽带信号
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    4.2 编码与调制区别
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    4.3 数字数据编码为数字信号
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    4.4 数字数据调制为模拟信号
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    4.5 模拟数据编码为数字信号
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46" class="md-nav__link">
+    4.6 模拟数据调制为模拟信号
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    (5) 数据交换方式
+  </a>
+  
+    <nav class="md-nav" aria-label="(5) 数据交换方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-circuit-exchanging" class="md-nav__link">
+    5.1 电路交换（Circuit Exchanging）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-message-exchanging" class="md-nav__link">
+    5.2 报文交换（Message Exchanging）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-packet-exchanging" class="md-nav__link">
+    5.3 分组交换（Packet Exchanging）
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3 分组交换（Packet Exchanging）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#531" class="md-nav__link">
+    5.3.1 分组交换——数据报方式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#532" class="md-nav__link">
+    5.3.2 分组交换——虚电路方式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#533" class="md-nav__link">
+    5.3.3 数据报与虚电路两种方式的区别
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    5.4 数据交换方式的选择
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    (6) 物理层传输介质
+  </a>
+  
+    <nav class="md-nav" aria-label="(6) 物理层传输介质">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    6.1 双绞线
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    6.2 同轴电缆
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    6.3 光钎
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64" class="md-nav__link">
+    6.4 非导向性传输介质
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    (7) 物理层设备
+  </a>
+  
+    <nav class="md-nav" aria-label="(7) 物理层设备">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    7.1 中继器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    7.2 集线器(多口中继器)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../计算机专业基础课程/操作系统.md" class="md-nav__link">
+        操作系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../计算机专业基础课程/数据结构.md" class="md-nav__link">
+        数据结构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../计算机专业基础课程/计算机组成原理.md" class="md-nav__link">
+        计算机组成原理
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_7" type="checkbox" id="__nav_7" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_7" tabindex="0" aria-expanded="false">
+          AcWing工程课——Django
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="AcWing工程课——Django" data-md-level="1">
+        <label class="md-nav__title" for="__nav_7">
+          <span class="md-nav__icon md-icon"></span>
+          AcWing工程课——Django
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AcWing%E5%B7%A5%E7%A8%8B%E8%AF%BE%E2%80%94%E2%80%94Django/%E7%AE%80%E4%BB%8B/" class="md-nav__link">
+        项目简介
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AcWing%E5%B7%A5%E7%A8%8B%E8%AF%BE%E2%80%94%E2%80%94Django/%E4%B8%80%E3%80%81%E9%A1%B9%E7%9B%AE%E5%9F%BA%E6%9C%AC%E8%AE%BE%E7%BD%AE/" class="md-nav__link">
+        第一章 项目基本设置
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AcWing%E5%B7%A5%E7%A8%8B%E8%AF%BE%E2%80%94%E2%80%94Django/%E4%BA%8C%E3%80%81%E5%88%9B%E5%BB%BA%E8%8F%9C%E5%8D%95%E7%95%8C%E9%9D%A2/" class="md-nav__link">
+        第二章 创建菜单界面
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AcWing%E5%B7%A5%E7%A8%8B%E8%AF%BE%E2%80%94%E2%80%94Django/%E4%B8%89%E3%80%81%E5%88%9B%E5%BB%BA%E6%B8%B8%E6%88%8F%E7%95%8C%E9%9D%A2/" class="md-nav__link">
+        第三章 创建游戏界面
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AcWing%E5%B7%A5%E7%A8%8B%E8%AF%BE%E2%80%94%E2%80%94Django/%E5%9B%9B%E3%80%81%E9%83%A8%E7%BD%B2nginx%E5%92%8C%E5%AF%B9%E6%8E%A5AcApp/" class="md-nav__link">
+        第四章 部署nginx和对接AcApp
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AcWing%E5%B7%A5%E7%A8%8B%E8%AF%BE%E2%80%94%E2%80%94Django/%E4%BA%94%E3%80%81%E5%88%9B%E5%BB%BA%E8%B4%A6%E5%8F%B7%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        第五章 创建账号系统
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AcWing%E5%B7%A5%E7%A8%8B%E8%AF%BE%E2%80%94%E2%80%94Django/%E5%85%AD%E3%80%81%E9%85%8D%E7%BD%AEAcWing%E4%B8%80%E9%94%AE%E7%99%BB%E5%BD%95/" class="md-nav__link">
+        第六章 配置AcWing一键登录
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../AcWing%E5%B7%A5%E7%A8%8B%E8%AF%BE%E2%80%94%E2%80%94Django/%E4%B8%83%E3%80%81%E5%AE%9E%E7%8E%B0%E8%81%94%E6%9C%BA%E5%AF%B9%E6%88%98%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        第七章 实现联机对战系统
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_8" type="checkbox" id="__nav_8" >
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_8" tabindex="0" aria-expanded="false">
+          Linux
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Linux" data-md-level="1">
+        <label class="md-nav__title" for="__nav_8">
+          <span class="md-nav__icon md-icon"></span>
+          Linux
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " data-md-toggle="__nav_8_1" type="checkbox" id="__nav_8_1" >
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_8_1" tabindex="0" aria-expanded="false">
+          常用指令
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="常用指令" data-md-level="2">
+        <label class="md-nav__title" for="__nav_8_1">
+          <span class="md-nav__icon md-icon"></span>
+          常用指令
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/Linux/" class="md-nav__link">
+        Linux
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/git/" class="md-nav__link">
+        Git
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/docker/" class="md-nav__link">
+        Docker
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Linux/%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4/shell/" class="md-nav__link">
+        Shell
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    (1) 物理层的基本概念
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    (2) 数据通信
+  </a>
+  
+    <nav class="md-nav" aria-label="(2) 数据通信">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    2.1 数据通信相关基本术语
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    2.2 三种通信方式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23" class="md-nav__link">
+    2.3 数据传输方式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24" class="md-nav__link">
+    2.4 码元
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#25" class="md-nav__link">
+    2.5 数字通信系统数据传输速率的两种表示方法
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#26" class="md-nav__link">
+    2.6 带宽
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    (3) 奈氏准则和香农定理
+  </a>
+  
+    <nav class="md-nav" aria-label="(3) 奈氏准则和香农定理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31" class="md-nav__link">
+    3.1 失真
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32" class="md-nav__link">
+    3.2 奈氏准则（奈奎斯特定理）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33" class="md-nav__link">
+    3.3 香农定理
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34" class="md-nav__link">
+    3.4 奈氏准则和香农定理的联系
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    (4) 编码与调制
+  </a>
+  
+    <nav class="md-nav" aria-label="(4) 编码与调制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    4.1 基带信号与宽带信号
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    4.2 编码与调制区别
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43" class="md-nav__link">
+    4.3 数字数据编码为数字信号
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44" class="md-nav__link">
+    4.4 数字数据调制为模拟信号
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45" class="md-nav__link">
+    4.5 模拟数据编码为数字信号
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46" class="md-nav__link">
+    4.6 模拟数据调制为模拟信号
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5" class="md-nav__link">
+    (5) 数据交换方式
+  </a>
+  
+    <nav class="md-nav" aria-label="(5) 数据交换方式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-circuit-exchanging" class="md-nav__link">
+    5.1 电路交换（Circuit Exchanging）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-message-exchanging" class="md-nav__link">
+    5.2 报文交换（Message Exchanging）
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#53-packet-exchanging" class="md-nav__link">
+    5.3 分组交换（Packet Exchanging）
+  </a>
+  
+    <nav class="md-nav" aria-label="5.3 分组交换（Packet Exchanging）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#531" class="md-nav__link">
+    5.3.1 分组交换——数据报方式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#532" class="md-nav__link">
+    5.3.2 分组交换——虚电路方式
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#533" class="md-nav__link">
+    5.3.3 数据报与虚电路两种方式的区别
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#54" class="md-nav__link">
+    5.4 数据交换方式的选择
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    (6) 物理层传输介质
+  </a>
+  
+    <nav class="md-nav" aria-label="(6) 物理层传输介质">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#61" class="md-nav__link">
+    6.1 双绞线
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#62" class="md-nav__link">
+    6.2 同轴电缆
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#63" class="md-nav__link">
+    6.3 光钎
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#64" class="md-nav__link">
+    6.4 非导向性传输介质
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    (7) 物理层设备
+  </a>
+  
+    <nav class="md-nav" aria-label="(7) 物理层设备">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#71" class="md-nav__link">
+    7.1 中继器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#72" class="md-nav__link">
+    7.2 集线器(多口中继器)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+
+  <h1>第二章 物理层</h1>
+
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226203210.png" /></p>
+<h2 id="1">(1) 物理层的基本概念</h2>
+<p>物理层解决如何在链接各种计算机的传输媒体上<font color=green>传输数据比特流</font>，而不是指具体的传输媒体。</p>
+<p>物理层的主要任务：确定传输媒体<font color=green>接口</font>有关的一些特性，即定义标准。</p>
+<p><strong>物理层接口特性</strong></p>
+<ol>
+<li>机械特性：定义物理连接的特性，规定物理链接是所采用的规格、接口形状、引线数目、引脚数目和排列情况。</li>
+<li>电气特性：规定传输二进制位时，线路上信号的电压范围、阻抗匹配、传输速率和距离限制等。</li>
+<li>功能特性：指明某条线上出现的某一电平表示何种意义，接口部件的信号显得用途。</li>
+<li>规程特性（过程特性）：定义各条物理线路的工作规程和时序关系。</li>
+</ol>
+<h2 id="2">(2) 数据通信</h2>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226203404.png" /></p>
+<p>通信的目的是<font color=green>传送消息</font>。</p>
+<h3 id="21">2.1 数据通信相关基本术语</h3>
+<ul>
+<li>数据 data：传送信息的实体，通常是有意义的符号序列。</li>
+<li>信号：数据电气/电磁的表现，是数据在传输过程中的存在形式。<ul>
+<li>数字信号/离散信号</li>
+<li>模拟信号/连续信号</li>
+</ul>
+</li>
+<li>信源：产生和发送数据的源头</li>
+<li>信宿：接受数据的终点</li>
+<li>信道：信号的传输媒介。一般用来表示向某一个方向传送信息的介质，因此一条通信线路往往包含一条发送信道和一条接受信道。<ul>
+<li>按传输信号分类：模拟信道、数字信道</li>
+<li>按传输介质分类：无线信道、有线信道</li>
+</ul>
+</li>
+</ul>
+<h3 id="22">2.2 三种通信方式</h3>
+<p>从通信双方信息的交互方式看，可以有三种基本方式： </p>
+<ul>
+<li>单工通信：只有一个方向的通信而没有反方向的交互，仅需要<font color=green>一条</font>信道。eg：广播。</li>
+<li>半双工通信/双向交替通信：通信的双方都可以发送或者接受信息，但任何一方都不能同时发送和接收，需要<font color=green>两条</font>信道。eg：对讲机。</li>
+<li>全双工通信/双向同时通信：通信双方都可以同事发送和接受信息，需要<font color=green>两条</font>信道。eg：打电话。</li>
+</ul>
+<h3 id="23">2.3 数据传输方式</h3>
+<ul>
+<li>串行传输：将表示一个字符的 8 位二进制数按由低位到高位的顺序一次发送。速度慢，费用低，适合距离远。</li>
+<li>并行传输：将表示一个字付的 8 位二进制数同时通过 8 条信道发送。速度快，费用高，适合近距离。<font color=green>计算机内部使用并行传输</font>。</li>
+<li>同步传输：在同步传输的模式下，数据的传送是以一个<font color=green>数据区块</font>为单位，因此同步传输又称为<font color=green>区块传输</font>。在传送数据时，需要先送出 1 个或者多个同步字符 <font color=green>SYN</font>，再送出整批的数据。</li>
+</ul>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226203435.png" /></p>
+<ul>
+<li>异步传输：异步传输将<font color=green>比特分成小组进行传送</font>，小组可以是 8 位的 1 个字符或者更长。发送方可以在任何时可发送这些比特组，而接收方不知道他们会在什么时候到达。传送数据时，<font color=green>加一个字符起始位和一个字符终止位。
+</font></li>
+</ul>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226203456.png" /></p>
+<h3 id="24">2.4 码元</h3>
+<p>定义：指用一个固定长度的信号波形（数字脉冲），代表不同离散数值的基本波形，是数字通信中数字信号的计量单位，这个时长内的信号成为 <font color=green>k 进制码元</font>，而该时长成为<font color=green>码元宽度</font>。当码元的离散状态有 M 个时（M 大于 2），此时码元为 M 进制码元。</p>
+<p>1 码元可以携带多个比特的信息量。</p>
+<p>二进制编码时，存在 01（高电平与低电平）两种信号，此时就对应着两种不同的离散状态，需要 1bit 来表示。</p>
+<p>四进制编码时，存在 4 种信号，此时就对应着四种不同的离散状态，需要 2bit 来表示。  </p>
+<p>十六进制编码时，存在 16 种信号，此时就对应着 16 种不同的离散状态，需要 4bit 来表示。</p>
+<h3 id="25">2.5 数字通信系统数据传输速率的两种表示方法</h3>
+<p>速率也叫数据率，是指数据的<font color=green>传输速率</font>，表示单位时间内传输的数据量。可以用<font color=green>码元传输速率</font>和<font color=green>信息传输速率</font>来表示。</p>
+<p><strong>码元传输速率</strong></p>
+<p>别名码元速率、波形速率、调制速率、符号速率等，它表示单位时间内数字通信系统所传输的码元个数（也可称为<font color=green>脉冲个数或者信号变化的次数</font>），单位是<font color=green>波特（Baud，简写 B）</font>。<font color=red>1B 表示数字通信系统每秒传输一个码元</font>。</p>
+<p>数字信号有多进制和二进制之分，但是码元速率与<font color=green>进制数</font>无关，只与<font color=green>码元长度</font> T 有关，且二者互为倒数： </p>
+<div class="arithmatex">\[R_B = \frac{1}{T}(B)\]</div>
+<p><strong>信息传输速率</strong></p>
+<p>别名信息速率、比特率等，表示单位时间内数字通信系统传输的<font color=green>二进制码元个数</font> （即比特数），单位使比特/秒（b/s）。<font color=red>1b/s 表示 1 秒传输多少个比特</font>。</p>
+<p><strong>关系</strong></p>
+<p>若一个码元携带 nbit 的信息量，则 M Baud 的码元传输速率所对应的信息传输速率为 Mxn bit/s。</p>
+<p>经典例题 1：</p>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226203543.png" /></p>
+<p>经典例题 2：</p>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226203600.png" /></p>
+<div class="arithmatex">\[4800 = 1600 \times log_2^8\]</div>
+<p>经典例题 3：</p>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226203630.png" /></p>
+<div class="arithmatex">\[1200 = 2400 \div log_2^4\]</div>
+<h3 id="26">2.6 带宽</h3>
+<ul>
+<li>模拟信号中：最高频率和最低频率间的差值就代表了系统的通频带宽，单位赫兹(Hz)。</li>
+<li>数字设备中：表是在单位时间内从网络中的某一点到另一点所能通过的“<font color=green>最高数据率</font>”/单位时间内通过链路的数量，常用来表示网络中的通信线路所能传输数据的能力，单位比特每秒(bps，b/s)。</li>
+</ul>
+<h2 id="3">(3) 奈氏准则和香农定理</h2>
+<h3 id="31">3.1 失真</h3>
+<p><strong>影响失真程度的因素</strong>：码元传输速率、信号传输距离、噪声干扰、传输媒体质量</p>
+<p><strong>一种重要失真现象--码间串扰</strong></p>
+<p>码间串扰：<font color=green>接收端</font>收到的信号波形<font color=green>失去了码元之间清晰界限</font>的现象。如下图中第四根电话线上的波形震动太快，导致接收方无法识别。</p>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226203649.png" /></p>
+<h3 id="32">3.2 奈氏准则（奈奎斯特定理）</h3>
+<blockquote>
+<p>在奈氏准则和香农定理中的<font color=red>带宽单位是赫兹 Hz！</font></p>
+</blockquote>
+<p>奈氏准则：在理想低通（无噪声、带宽受限）条件下，为了避免码间串扰，极限<font color=green>码元传输速率</font>为 2W Baud，W 表是带宽，单位为 Hz。</p>
+<p>理想低通信道下的极限数据传输速率为 <span class="arithmatex">\(= 2W log_2^V(b/s)\)</span>，其中 v 代表有几种码元/码元的离散电平数目。</p>
+<p>注意：</p>
+<ol>
+<li>在任何信道中，<font color=red>码元传输的速率是有上限的</font>。若传输速率超过此上线，就出出现严重的码间串扰问题，使接收端对码元的完全正确识别成为不可能。</li>
+<li>信道的频带越宽（即能通过的信号高频分量越多），就可以使用更高的速率进行码元的有效传输。</li>
+<li><font color=green>奈氏准则给出了码元传输速率的限制，但是并没有对信息传输速率给出限制</font>。</li>
+<li>由于码元的传输速率受到奈氏准则的制约，所以要提高数据的传输速率，就必须设法师每个码元能携带更多个比特的信息量，这就需要采用多元制的调制方法。</li>
+</ol>
+<h3 id="33">3.3 香农定理</h3>
+<p>噪声存在于所有的电子设备和通信信道中。由于噪声随机产生，它的瞬时值有时会很大，因此噪声会使接收端对码元的判断产生错误。但是噪声的影响是相对的，若信号强，那么噪声影响相对较小。因此，<font color=green>信噪比</font>就很重要。</p>
+<p>信噪比 = 信号的平均功率 / 噪声的平均功率，记为 <span class="arithmatex">\(S/N\)</span>，并用分贝 (db) 作为度量单位，二者转换关系为：信噪比(db)<span class="arithmatex">\(=10log_{10}^{(S/N)}\)</span>。</p>
+<p>香农定理： 在带宽受限且有噪声的信道中，为了不产生误差，<font color=green>信息的数据传输速率</font>有上限值。</p>
+<p>信道的极限数据传输速率 = <span class="arithmatex">\(W log_2^{(1 + S/N)}\ \ (b/s)\)</span>，其中 W 表示带宽。</p>
+<p>注意： </p>
+<ol>
+<li>信道的带宽或者信道中的信噪比越大，则信息的极限传输速率就越高。</li>
+<li>对一定得传输带宽和一定的信噪比，信息的传输速率的上限就确定了。</li>
+<li>只要信息的传输速率低于信道的极限传输速率，就一定能找到某种方法来实现<font color=green>误差错的传输</font>。</li>
+<li>香农定理得出的为极限信息传输速率，实际信道能达到的传输速率要被它低不少。</li>
+<li>从香农定理可以得出，若信道的带宽 W 或者信噪比 S/N 没有上限（不可能），那么信道的极限信息传输速率也就没有上限。</li>
+</ol>
+<h3 id="34">3.4 奈氏准则和香农定理的联系</h3>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226203708.png" /></p>
+<h2 id="4">(4) 编码与调制</h2>
+<h3 id="41">4.1 基带信号与宽带信号</h3>
+<p>信道：信号传输的媒介。一般用来表示向某一个方向传送信息的介质，因此一条通信线路往往包含一条发送信道和一条接受信道。</p>
+<p>信道上传送的信号：</p>
+<ul>
+<li>基带信号：将数字信号 1 和 0 <font color=green>直接用两种不同的电压表示</font>，再送到数字信道上去传输（基带传输）。适合距离较近的传输。</li>
+<li>宽带信号：将基带信号进行调制后形成的频分复用模拟信号，再传送到模拟信道上去传输（宽带传输）。把基带信号经过载波调制后，把信号的频率范围搬移到较高的频段以便在信道中传输（即仅在一段频率范围内能够通过信道）。适合距离较远的传输。</li>
+</ul>
+<h3 id="42">4.2 编码与调制区别</h3>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226203726.png" /></p>
+<h3 id="43">4.3 数字数据编码为数字信号</h3>
+<p><strong>非归零编码</strong>：编码容易实现，但是没有检错功能，且无法判断一个码元的开始和结束，以至于收发双方<font color=green>难以保持同步</font>。</p>
+<p><strong>归零编码</strong>：信号电平在一个码元之内都要恢复到零的这种编码方式。</p>
+<p><strong>曼切斯特编码</strong>：将码元分成两个相等的间隔，前一个间隔为低电平后一个为高电平表示码元 1；码元 0 则正好相反。也可以采用相反的规定。该编码的特点是在每一个码元的中间出现电平跳变，位中间的跳变即作为时钟信号（可用于同步），又做数字信号，但<font color=green>它所占的频带宽度是原始的基带宽度的两倍</font>。每一个码元都被调成两个电平，所以<font color=green>数据传输速率只有调制速率的 &frac12;</font>。</p>
+<p><strong>差分曼切斯特编码</strong>（<font color=red>同 0 异 1</font>）：常用于局域网传输，其规则是：若码元为 1，则前半个码元的电平与上一个码元的后半个码元的电平相同，若为 0，则相反。该编码的特点为：每个码元的中间，都有一次电平的跳转，可以实现自同步，且<font color=green>抗干扰性强与曼切斯特编码</font>。</p>
+<p><strong>4B/5B编码</strong>：比特流中插入额外的比特以打破一连串的 0 或 1，就是用 5 个比特来编码 4个比特的数据，之后在传给接收方，因此称为 4B/5B 编码。编码效率为<font color=green>80%</font>。</p>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226203744.png" /></p>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226203801.png" /></p>
+<h3 id="44">4.4 数字数据调制为模拟信号</h3>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226203832.png" /></p>
+<h3 id="45">4.5 模拟数据编码为数字信号</h3>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226203904.png" /></p>
+<h3 id="46">4.6 模拟数据调制为模拟信号</h3>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226203931.png" /></p>
+<h2 id="5">(5) 数据交换方式</h2>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226203948.png" /></p>
+<h3 id="51-circuit-exchanging">5.1 电路交换（Circuit Exchanging）</h3>
+<p>原理：在数据传输期间，源节点与目的节点之间有一条由中间节点构成的专用物理连接线路，在数据传输结束之前，这条线路一直保持。</p>
+<p>过程：建立连接 <span class="arithmatex">\(\rightarrow\)</span> 数据传输 <span class="arithmatex">\(\rightarrow\)</span> 释放连接</p>
+<p>特点：<font color=green>独占资源</font>，用户始终占用端到端的固定传输宽带。适用于<font color=green>远程</font>批处理信息传输或者<font color=green>系统间实时性要求高</font>的大量数据传输的情况。</p>
+<p>优缺点：</p>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226204005.png" /></p>
+<h3 id="52-message-exchanging">5.2 报文交换（Message Exchanging）</h3>
+<p>报文（message）：报文是网络中交换与传输的数据单元，即站点<font color=green>一次性要发送的数据块</font>。报文包含了完整的数据信息，其长短很不一致，长度不限且可变。</p>
+<p>报文交换原理：无需在两个站点之间建立一条专用通路，数据传输的单位是报文，传送过程采用 <font color=green>存储转发</font> 方式。</p>
+<p>优缺点：</p>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226204023.png" /></p>
+<h3 id="53-packet-exchanging">5.3 分组交换（Packet Exchanging）</h3>
+<p>分组（packet）：大多数计算机网络都不能连续的传送任意长度的数据，所以实际上网络系统把数据分割成小块，然后逐块的发送，这种小块就成为分组。</p>
+<p>分组交换原理：分组交换与报文交换的方式基本相同，都采用 <font color=green>存储转发</font> 的方式，形式上的主要差别在于，分组交换网中要限制所传输的数据单位的长度，一般为 128B 。发送节点首先对从终端设备送来的数据报文进行接收、存储，而后将报文划分成一定长度的分组，并以分组为单位进行传输和交换。接收节点奖收到的分组祖装成信息或者报文。</p>
+<p>优缺点：</p>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226204040.png" /></p>
+<h4 id="531">5.3.1 分组交换——数据报方式</h4>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226204101.png" /></p>
+<p>特点：</p>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226204133.png" /></p>
+<h4 id="532">5.3.2 分组交换——虚电路方式</h4>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226204209.png" /></p>
+<p>特点：</p>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226204313.png" /></p>
+<h4 id="533">5.3.3 数据报与虚电路两种方式的区别</h4>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226204421.png" /></p>
+<h3 id="54">5.4 数据交换方式的选择</h3>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226204451.png" /></p>
+<h2 id="6">(6) 物理层传输介质</h2>
+<p><strong>传输介质</strong>：也称为传输媒体/传输媒介，是数据传输系统中在发送设备和接受设备之间的物理通路。</p>
+<blockquote>
+<p><font color=red>传输媒体并不是物理层</font>。传输媒体在物理层下面，因为物理层使体系结构的第一层，因此有时称传输媒体为 0 层。在传输媒体中传输的是信号，但是传输媒体并不知道所传输的信号所代表所代表的意义，但是物理层规定了 <font color=green>电气特性</font>，因此能够识别所传送的比特流。</p>
+</blockquote>
+<p><strong>传输介质分类</strong>：</p>
+<ul>
+<li>导向性传输介质：电磁波被导向沿着固体媒介传播。</li>
+<li>非导向性传输介质：自由空间，介质可以是空气、真空、海水等。</li>
+</ul>
+<h3 id="61">6.1 双绞线</h3>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226204519.png" /></p>
+<h3 id="62">6.2 同轴电缆</h3>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226204542.png" /></p>
+<h3 id="63">6.3 光钎</h3>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226204557.png" /></p>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226204611.png" /></p>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226204630.png" /></p>
+<h3 id="64">6.4 非导向性传输介质</h3>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226204643.png" /></p>
+<h2 id="7">(7) 物理层设备</h2>
+<h3 id="71">7.1 中继器</h3>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226204702.png" /></p>
+<h3 id="72">7.2 集线器(多口中继器)</h3>
+<p><img alt="" src="https://cdn.jsdelivr.net/gh/LuciferCCC/blogs_images@main/20230226204714.png" /></p>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 26, 2023</span>
+      
+        <br>
+        创建日期:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">February 26, 2023</span>
+      
+    
+  </small>
+</div>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var tab,labels=set.querySelector(".tabbed-labels");for(tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            回到页面顶部
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="页脚" >
+        
+          
+          <a href="../%E7%AC%AC%E4%B8%80%E7%AB%A0%20%E6%A6%82%E8%BF%B0/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 第一章 概述" rel="prev">
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  上一页
+                </span>
+                第一章 概述
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../../AcWing%E5%B7%A5%E7%A8%8B%E8%AF%BE%E2%80%94%E2%80%94Django/%E7%AE%80%E4%BB%8B/" class="md-footer__link md-footer__link--next" aria-label="下一页: 项目简介" rel="next">
+            <div class="md-footer__title">
+              <div class="md-ellipsis">
+                <span class="md-footer__direction">
+                  下一页
+                </span>
+                项目简介
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022.01 - 2023 lumoumou
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.path", "navigation.indexes", "navigation.top", "toc.follow", "search.suggest", "search.highlight", "search.share", "header.autohide", "navigation.footer", "content.code.copy", "content.code.annotate", "content.tabs.link"], "search": "../../../../../assets/javascripts/workers/search.e5c33ebb.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.51d95adb.min.js"></script>
+      
+        <script src="../../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
